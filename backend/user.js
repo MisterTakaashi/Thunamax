@@ -11,5 +11,5 @@ if (process.env.NODE_ENV == 'test'){
 var User = mongoose.model('users', { lastname: String, firstname: String, wallet: Number, waiting_wallet: Number });
 
 module.exports.getUser = function (firstname, lastname) {
-  return User.findOne({lastname: 'Truc', firstname: 'Machin'}).exec();
+  return User.findOne({lastname: lastname, firstname: firstname}).exec();
 }

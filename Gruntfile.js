@@ -461,6 +461,29 @@ module.exports = function (grunt) {
       test: {
         NODE_ENV : 'test'
       }
+    },
+
+    instrument: {
+      files: 'backend/*.js',
+      options: {
+        lazy: true,
+        basePath: 'backend/test/coverage/instrument/'
+      }
+    },
+
+    storeCoverage: {
+      options: {
+        dir: 'backend/test/coverage/reports'
+      }
+    },
+
+    makeReport: {
+      src: 'backend/test/coverage/reports/**/*.json',
+      options: {
+        type: 'lcov',
+        dir: 'test/coverage/reports',
+        print: 'detail'
+      }
     }
   });
 
@@ -495,6 +518,19 @@ module.exports = function (grunt) {
     'postcss',
     'connect:test',
     'mochaTest'
+  ]);
+
+  grunt.registerTask('coverage', [
+    'clean:server',
+    'wiredep',
+    'env:test',
+    'concurrent:test',
+    'postcss',
+    'connect:test',
+    'instrument',
+    'mochaTest',
+    'storeCoverage',
+    'makeReport'
   ]);
 
   grunt.registerTask('build', [
