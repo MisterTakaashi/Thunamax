@@ -15,7 +15,10 @@ app.get('/', function (req, res) {
 });
 
 app.post('/checkout', function(req, res) {
-  let card = JSON.parse(req.body.card);
+  // let card = JSON.parse(req.body.card);
+  let card = req.body.card;
+
+  console.log(card);
 
   let cardResult = cardChecker.checkCard(card);
   if (!cardResult.status){

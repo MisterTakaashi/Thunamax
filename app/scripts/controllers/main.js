@@ -14,16 +14,34 @@ angular.module('thunamaxApp')
       'AngularJS',
       'Karma'
     ];
-
+    $scope.valide = false;
+    $scope.affichageErreur = false;
     $scope.valideForm = function(){
       console.log("Transfer des données bancaires");
-      card = {
-        infosCarte: $scope.carteInput,
-        infosProprietaire: $scope.proprietaireInput,
-        expire: $scope.expireInput,
-        crypto: $scope.cryptoInput
+      var card = {
+        number: $scope.carteInput,
+        firstname: $scope.firstname,
+        lastname: $scope.lastname,
+        expiration: $scope.expireInput,
+        cvv: $scope.cryptoInput
       }
       var amount = 50;
-      mainService.getCardInfos(card, amount);
+      $scope.valide = true;
+      mainService.getCardInfos(card, amount).then(function(data){
+        $scope.status = data.status;
+        if ($scope.status == false){
+            $scope.affichageErreur = true;
+            $scope.error = data.error;
+        }
+
+      }, function (error) {
+        console.log(error);
+      });
+
+    }
+
+    $scope.goAccueil = function(){
+      $scope.valide = false;
+      $scope.affichageErreur = false;
     }
   });
