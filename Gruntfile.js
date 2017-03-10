@@ -13,6 +13,8 @@ module.exports = function (grunt) {
   require('time-grunt')(grunt);
 
   grunt.loadNpmTasks('grunt-express-server');
+  grunt.loadNpmTasks('grunt-mocha-test');
+  grunt.loadNpmTasks('grunt-env');
 
   // Automatically load required Grunt tasks
   require('jit-grunt')(grunt, {
@@ -434,11 +436,30 @@ module.exports = function (grunt) {
       }
     },
 
+    // Tests nuls
+    mochaTest: {
+      test: {
+        options: {
+          reporter: 'spec'
+        },
+        src: ['backend/test/**/*.js']
+      }
+    },
+
     express: {
       dev: {
         options: {
           script: 'backend/app.js'
         }
+      }
+    },
+
+    env: {
+      dev: {
+        NODE_ENV : 'development'
+      },
+      test: {
+        NODE_ENV : 'test'
       }
     }
   });
@@ -452,6 +473,7 @@ module.exports = function (grunt) {
     grunt.task.run([
       'clean:server',
       'wiredep',
+      'env:dev',
       'concurrent:server',
       'express:dev',
       'postcss:server',
@@ -468,10 +490,11 @@ module.exports = function (grunt) {
   grunt.registerTask('test', [
     'clean:server',
     'wiredep',
+    'env:test',
     'concurrent:test',
     'postcss',
     'connect:test',
-    'karma'
+    'mochaTest'
   ]);
 
   grunt.registerTask('build', [
