@@ -1,4 +1,5 @@
 var mongoose = require('mongoose');
+// mongoose.Promise = require('bluebird');
 var process = require('process');
 
 if (process.env.NODE_ENV == 'test'){
@@ -7,6 +8,8 @@ if (process.env.NODE_ENV == 'test'){
   mongoose.connect('mongodb://localhost/thunamax');
 }
 
-module.exports.hasMoney = function (amount) {
-  return false;
+var User = mongoose.model('users', { lastname: String, firstname: String, wallet: Number, waiting_wallet: Number });
+
+module.exports.getUser = function (firstname, lastname) {
+  return User.findOne({lastname: 'Truc', firstname: 'Machin'}).exec();
 }
