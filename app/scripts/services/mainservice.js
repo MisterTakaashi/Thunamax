@@ -8,13 +8,11 @@
  * Service in the thunamaxApp.
  */
 angular.module('thunamaxApp')
-  .service('mainService', function () {
+  .service('mainService', function ($http) {
     // AngularJS will instantiate a singleton by calling "new" on this function
     var obj = {};
     obj.getCardInfos = function (card, amount) {
-      method: 'POST',
-      url: ':4040/checkout',
-      params: {card, amount};
+      return $http.post('http://localhost:4040/checkout', {card: card, amount: amount});
     }
     return obj;
   });
