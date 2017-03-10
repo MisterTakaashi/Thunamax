@@ -1,19 +1,19 @@
 <div class="row marketing">
   <form>
     <div class="divWidth">
-      <span>Numero de carte :<input id="numero" type="text" class="styleInput"></input></span>
+      <span>Numero de carte :<input id="numero" type="text" class="styleInput" ng-model="carteInput"></input></span>
     </div>
     <div class="divWidth">
-      <span>Proprietaire :<input id="proprietaire" type="text" class="styleInput"></input></span>
+      <span>Proprietaire :<input id="proprietaire" type="text" class="styleInput" ng-model="proprietaireInput"></input></span>
     </div>
     <div class="divWidth">
-      <span>Expire le :<input id="expires" type="text" class="styleInput"></input></span>
+      <span>Expire le :<input id="expires" type="text" class="styleInput" ng-model="expireInput"></input></span>
     </div>
     <div class="divWidth">
-      <span>Cryptogramme Visuel :<input id="cryptogramme" type="text" class="styleInput"></input></span>
+      <span>Cryptogramme Visuel :<input id="cryptogramme" type="text" class="styleInput" ng-model="cryptoInput"></input></span>
     </div>
     <div class="marginButton">
-      <button id="valider" class="btn btn-primary" type="submit">Valider</button>
+      <button id="valider" class="btn btn-primary" type="submit" ng-click="valideForm()">Valider</button>
     </div>
   </form>
 </div>
