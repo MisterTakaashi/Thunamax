@@ -80,4 +80,15 @@ body {
   .jumbotron {
     border-bottom: 0;
   }
+
+  .styleInput{
+    margin-left: 5px;
+    width: 100%;
+  }
+  .divWidth{
+    width: 300px;
+  }
+  .marginButton{
+    margin-top: 15px;
+  }
 }

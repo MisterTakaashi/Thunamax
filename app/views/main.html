@@ -1,23 +1,19 @@
-<div class="jumbotron">
-  <h1>'Allo, 'Allo!</h1>
-  <p class="lead">
-    <img src="images/yeoman.png" alt="I'm Yeoman"><br>
-    Always a pleasure scaffolding your apps.
-  </p>
-  <p><a class="btn btn-lg btn-success" ng-href="#/">Splendid!<span class="glyphicon glyphicon-ok"></span></a></p>
-</div>
-
 <div class="row marketing">
-  <h4>HTML5 Boilerplate</h4>
-  <p>
-    HTML5 Boilerplate is a professional front-end template for building fast, robust, and adaptable web apps or sites.
-  </p>
-
-  <h4>Angular</h4>
-  <p>
-    AngularJS is a toolset for building the framework most suited to your application development.
-  </p>
-
-  <h4>Karma</h4>
-  <p>Spectacular Test Runner for JavaScript.</p>
+  <form>
+    <div class="divWidth">
+      <span>Numero de carte :<input id="numero" type="text" class="styleInput" ng-model="carteInput"></input></span>
+    </div>
+    <div class="divWidth">
+      <span>Proprietaire :<input id="proprietaire" type="text" class="styleInput" ng-model="proprietaireInput"></input></span>
+    </div>
+    <div class="divWidth">
+      <span>Expire le :<input id="expires" type="text" class="styleInput" ng-model="expireInput"></input></span>
+    </div>
+    <div class="divWidth">
+      <span>Cryptogramme Visuel :<input id="cryptogramme" type="text" class="styleInput" ng-model="cryptoInput"></input></span>
+    </div>
+    <div class="marginButton">
+      <button id="valider" class="btn btn-primary" type="submit" ng-click="valideForm()">Valider</button>
+    </div>
+  </form>
 </div>
