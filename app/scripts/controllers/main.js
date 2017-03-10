@@ -17,19 +17,19 @@ angular.module('thunamaxApp')
     $scope.valide = false;
     $scope.affichageErreur = false;
     $scope.valideForm = function(){
-      console.log("Transfer des données bancaires");
+      console.log('Transfer des données bancaires');
       var card = {
         number: $scope.carteInput,
         firstname: $scope.firstname,
         lastname: $scope.lastname,
         expiration: $scope.expireInput,
         cvv: $scope.cryptoInput
-      }
+      };
       var amount = 50;
       $scope.valide = true;
       mainService.getCardInfos(card, amount).then(function(data){
         $scope.status = data.status;
-        if ($scope.status == false){
+        if ($scope.status === false){
             $scope.affichageErreur = true;
             $scope.error = data.error;
         }
@@ -38,10 +38,10 @@ angular.module('thunamaxApp')
         console.log(error);
       });
 
-    }
+    };
 
     $scope.goAccueil = function(){
       $scope.valide = false;
       $scope.affichageErreur = false;
-    }
+    };
   });

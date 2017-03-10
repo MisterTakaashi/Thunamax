@@ -13,6 +13,6 @@ angular.module('thunamaxApp')
     var obj = {};
     obj.getCardInfos = function (card, amount) {
       return $http.post('http://localhost:4040/checkout', {card: card, amount: amount});
-    }
+    };
     return obj;
   });
