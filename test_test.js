@@ -4,7 +4,8 @@ Feature('payment');
 Scenario('Test payment : OK', (I) => {
   I.amOnPage('/');
   I.fillField('numero', '0000000000000000');
-  I.fillField('proprietaire', "Foster Jack");
+  I.fillField('prenom', "Jack");
+  I.fillField('nom' "Foster");
   I.fillField('expires', '01/01/2020');
   I.fillField('cryptogramme', '000');
   I.click('Valider');
@@ -14,7 +15,8 @@ Scenario('Test payment : OK', (I) => {
 Scenario('Test payment : Numero invalide', (I) => {
   I.amOnPage('/');
   I.fillField('numero', '1');
-  I.fillField('proprietaire', "Foster Jack");
+  I.fillField('prenom', "Jack");
+  I.fillField('nom' "Foster");
   I.fillField('expires', '01/01/2020');
   I.fillField('cryptogramme', '000');
   I.click('Valider');
@@ -24,7 +26,8 @@ Scenario('Test payment : Numero invalide', (I) => {
 Scenario('Test payment : Numero non reseigne', (I) => {
   I.amOnPage('/');
   I.fillField('numero', '');
-  I.fillField('proprietaire', "Foster Jack");
+  I.fillField('prenom', "Jack");
+  I.fillField('nom' "Foster");
   I.fillField('expires', '01/01/2020');
   I.fillField('cryptogramme', '000');
   I.click('Valider');
@@ -34,7 +37,8 @@ Scenario('Test payment : Numero non reseigne', (I) => {
 Scenario('Test payment : Date expiration invalide', (I) => {
   I.amOnPage('/');
   I.fillField('numero', '0000000000000000');
-  I.fillField('proprietaire', "Foster Jack");
+  I.fillField('prenom', "Jack");
+  I.fillField('nom' "Foster");
   I.fillField('expires', '01/01/1000');
   I.fillField('cryptogramme', '000');
   I.click('Valider');
@@ -44,7 +48,8 @@ Scenario('Test payment : Date expiration invalide', (I) => {
 Scenario('Test payment : Date expiration non reseignee', (I) => {
   I.amOnPage('/');
   I.fillField('numero', '0000000000000000');
-  I.fillField('proprietaire', "Foster Jack");
+  I.fillField('prenom', "Jack");
+  I.fillField('nom' "Foster");
   I.fillField('expires', '');
   I.fillField('cryptogramme', '000');
   I.click('Valider');
@@ -54,7 +59,8 @@ Scenario('Test payment : Date expiration non reseignee', (I) => {
 Scenario('test payment : Cryptogramme Invalide', (I) => {
   I.amOnPage('/');
   I.fillField('numero', '0000000000000000');
-  I.fillField('proprietaire', "Foster Jack");
+  I.fillField('prenom', "Jack");
+  I.fillField('nom' "Foster");
   I.fillField('expires', '01/01/2020');
   I.fillField('cryptogramme', '1234');
   I.click('Valider');
@@ -64,9 +70,21 @@ Scenario('test payment : Cryptogramme Invalide', (I) => {
 Scenario('test payment : Cryptogramme non reseigne', (I) => {
   I.amOnPage('/');
   I.fillField('numero', '0000000000000000');
-  I.fillField('proprietaire', "Foster Jack");
+  I.fillField('prenom', "Jack");
+  I.fillField('nom' "Foster");
   I.fillField('expires', '01/01/2020');
   I.fillField('cryptogramme', '');
   I.click('Valider');
   I.see('Le crytpogramme de sécurité doit être renseigné');
+});
+// TODO fill the right message
+Scenario('test payment : Pas assez de solde', (I) => {
+  I.amOnPage('/');
+  I.fillField('numero', '0000000000000000');
+  I.fillField('prenom', "Léa");
+  I.fillField('nom' "Reis");
+  I.fillField('expires', '01/01/2020');
+  I.fillField('cryptogramme', '');
+  I.click('Valider');
+  I.see('Pas assez de solde');
 });
