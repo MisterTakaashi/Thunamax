@@ -4,9 +4,9 @@
   "output": "./output",
   "helpers": {
     "Protractor": {
-      "url": "http://localhost",
+      "url": "http://localhost:9000",
       "driver": "hosted",
-      "browser": "chrome",
+      "browser": "phantomjs",
       "rootElement": "body"
     }
   },
