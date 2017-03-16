@@ -2,7 +2,7 @@ var expect = require('chai').expect
 
 describe('test file card', function(){
   beforeEach(function() {
-      cardChecker = require('../card.js');
+      cardChecker = require('../../backend/card.js');
   });
 
   describe('#checkCard method' , function() {

@@ -26,5 +26,7 @@ module.exports.checkCard = function (card) {
     return {status: false, error: "Le crytpogramme de sécurité est incorrect"};
   }
 
+  console.log("OOOOOOOK");
+
   return {status: true};
 }

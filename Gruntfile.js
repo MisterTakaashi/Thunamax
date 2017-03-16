@@ -14,6 +14,7 @@ module.exports = function (grunt) {
 
   grunt.loadNpmTasks('grunt-express-server');
   grunt.loadNpmTasks('grunt-mocha-test');
+  grunt.loadNpmTasks('grunt-istanbul');
   grunt.loadNpmTasks('grunt-env');
 
   // Automatically load required Grunt tasks
@@ -28,6 +29,10 @@ module.exports = function (grunt) {
     app: require('./bower.json').appPath || 'app',
     dist: 'dist'
   };
+
+  var dateFormat = require('dateformat');
+
+  var reportDir = 'test/coverage/reports/' + dateFormat(new Date(), 'yyyymmdd-HHMMss');
 
   // Define the configuration for all the tasks
   grunt.initConfig({
@@ -442,7 +447,7 @@ module.exports = function (grunt) {
         options: {
           reporter: 'spec'
         },
-        src: ['backend/test/**/*.js']
+        src: ['test/unit/*.js']
       }
     },
 
@@ -464,24 +469,28 @@ module.exports = function (grunt) {
     },
 
     instrument: {
-      files: 'backend/*.js',
-      options: {
-        lazy: true,
-        basePath: 'backend/test/coverage/instrument/'
+      files: 'backend/**/*.js',
+      options : {
+        lazy : true,
+        basePath : 'test/coverage/instrument/'
       }
+    },
+
+    reloadTasks : {
+      rootPath : 'test/coverage/instrument/backend'
     },
 
     storeCoverage: {
       options: {
-        dir: 'backend/test/coverage/reports'
+        dir: reportDir
       }
     },
 
     makeReport: {
-      src: 'backend/test/coverage/reports/**/*.json',
+      src: 'test/coverage/reports/**/*.json',
       options: {
         type: 'lcov',
-        dir: 'test/coverage/reports',
+        dir: reportDir,
         print: 'detail'
       }
     }
@@ -528,9 +537,10 @@ module.exports = function (grunt) {
     'postcss',
     'connect:test',
     'instrument',
+    'reloadTasks',
     'mochaTest',
     'storeCoverage',
-    'makeReport'
+    // 'makeReport'
   ]);
 
   grunt.registerTask('build', [
