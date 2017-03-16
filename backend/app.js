@@ -1,9 +1,14 @@
 var express = require('express');
-var bodyParser = require('body-parser')
+var bodyParser = require('body-parser');
+var mongoose = require('mongoose');
+// mongoose.Promise = require('bluebird');
+var process = require('process');
 
 var cardChecker = require('./card.js');
 
 var app = express();
+
+mongoose.connect('mongodb://localhost/thunamax_' + process.env.NODE_ENV);
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
