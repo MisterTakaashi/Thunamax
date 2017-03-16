@@ -442,14 +442,14 @@ module.exports = function (grunt) {
     },
 
     // Tests nuls
-    mochaTest: {
-      test: {
-        options: {
-          reporter: 'spec'
-        },
-        src: ['test/unit/*.js']
-      }
-    },
+    // mochaTest: {
+    //   test: {
+    //     options: {
+    //       reporter: 'spec'
+    //     },
+    //     src: ['test/unit/*.js']
+    //   }
+    // },
 
     express: {
       dev: {
@@ -468,32 +468,14 @@ module.exports = function (grunt) {
       }
     },
 
-    instrument: {
-      files: 'backend/**/*.js',
-      options : {
-        lazy : true,
-        basePath : 'test/coverage/instrument/'
-      }
-    },
-
-    reloadTasks : {
-      rootPath : 'test/coverage/instrument/backend'
-    },
-
-    storeCoverage: {
-      options: {
-        dir: reportDir
-      }
-    },
-
-    makeReport: {
-      src: 'test/coverage/reports/**/*.json',
-      options: {
-        type: 'lcov',
-        dir: reportDir,
-        print: 'detail'
-      }
-    }
+    mocha_istanbul: {
+            coverage: {
+                src: 'test/unit', // a folder works nicely
+                options: {
+                    mask: '*.js'
+                }
+            }
+          }
   });
 
 
@@ -536,10 +518,11 @@ module.exports = function (grunt) {
     'concurrent:test',
     'postcss',
     'connect:test',
-    'instrument',
-    'reloadTasks',
-    'mochaTest',
-    'storeCoverage',
+    'mocha_istanbul'
+    // 'instrument',
+    // 'reloadTasks',
+    // 'mochaTest',
+    // 'storeCoverage',
     // 'makeReport'
   ]);
 
