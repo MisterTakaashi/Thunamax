@@ -12,6 +12,7 @@ angular.module('thunamaxApp')
     // AngularJS will instantiate a singleton by calling "new" on this function
     var obj = {};
     obj.getCardInfos = function (card, amount) {
+      console.log(card);
       return $http.post('http://localhost:4040/checkout', {card: card, amount: amount});
     };
     return obj;

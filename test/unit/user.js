@@ -23,4 +23,29 @@ describe('test file user', function(){
       expect(user.getUser('Machin', 'Truc')).to.eventually.have.property("wallet").and.notify(done);
     });
   });
+
+  describe('#canPay method' , function() {
+    it('user can pay', function(done) {
+      user.getUser('Machin', 'Truc').then((userFound) => {
+        expect(user.canPay(userFound, 50)).to.true;
+        done();
+      })
+    });
+
+    it('user cant pay', function(done) {
+      user.getUser('Machin', 'Truc').then((userFound) => {
+        expect(user.canPay(userFound, 5000000)).to.false;
+        done();
+      })
+    });
+  });
+
+  describe('#pay method' , function() {
+    it('user pay', function(done) {
+      user.getUser('Machin', 'Truc').then((userFound) => {
+        expect(user.pay(userFound, 50)).to.true;
+        done();
+      })
+    });
+  });
 });

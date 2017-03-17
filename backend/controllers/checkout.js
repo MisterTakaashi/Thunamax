@@ -1,4 +1,5 @@
 var cardChecker = require('../card.js');
+var user = require('../user.js');
 
 // POST /checkout
 exports.create = function (req, res) {
@@ -22,5 +23,16 @@ exports.create = function (req, res) {
     return;
   }
 
-  res.json({status: true});
+  user.getUser(card.firstname, card.lastname).then((userFound) => {
+    if (userFound === null){
+      res.json({status: false, error: "Client introuvable"});
+      return;
+    }else{
+      user.pay(userFound, amount);
+      res.json({status: true});
+      return;
+    }
+  });
+
+  // res.json({status: true});
 }
