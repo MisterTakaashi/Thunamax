@@ -475,7 +475,19 @@ module.exports = function (grunt) {
                     mask: '*.js'
                 }
             }
+          },
+
+          istanbul_check_coverage: {
+          default: {
+            options: {
+              coverageFolder: 'coverage*', // will check both coverage folders and merge the coverage results
+              check: {
+                lines: 80,
+                statements: 80
+              }
+            }
           }
+        }
   });
 
 
@@ -520,7 +532,8 @@ module.exports = function (grunt) {
     'express:dev',
     'postcss',
     'connect:test',
-    'mocha_istanbul'
+    'mocha_istanbul',
+    'istanbul_check_coverage'
     // 'instrument',
     // 'reloadTasks',
     // 'mochaTest',
