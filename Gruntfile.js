@@ -470,7 +470,7 @@ module.exports = function (grunt) {
 
     mocha_istanbul: {
             coverage: {
-                src: 'test/unit', // a folder works nicely
+                src: ['test/unit', 'test/api'], // a folder works nicely
                 options: {
                     mask: '*.js'
                 }
@@ -506,6 +506,7 @@ module.exports = function (grunt) {
     'wiredep',
     'env:test',
     'concurrent:test',
+    'express:dev',
     'postcss',
     'connect:test',
     'mochaTest'
@@ -516,6 +517,7 @@ module.exports = function (grunt) {
     'wiredep',
     'env:test',
     'concurrent:test',
+    'express:dev',
     'postcss',
     'connect:test',
     'mocha_istanbul'

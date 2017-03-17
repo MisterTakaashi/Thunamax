@@ -14,7 +14,7 @@ module.exports.checkCard = function (card) {
     return {status: false, error: "Le numéro de carte doit être renseigné"};
   }
   if (!new RegExp(/^\d{16}$/).test(number)){
-    return {status: false, error: "Le numéro de carte est incorrecte"};
+    return {status: false, error: "Le numéro de carte est incorrect"};
   }
 
   // Vérification du CVV
@@ -25,8 +25,6 @@ module.exports.checkCard = function (card) {
   if (!new RegExp(/^\d{3}$/).test(cvv)){
     return {status: false, error: "Le crytpogramme de sécurité est incorrect"};
   }
-
-  console.log("OOOOOOOK");
 
   return {status: true};
 }
