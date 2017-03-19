@@ -30,7 +30,7 @@ module.exports = function (grunt) {
     dist: 'dist'
   };
 
-  var dateFormat = require('dateformat');
+  // var dateFormat = require('dateformat');
 
   // var reportDir = 'test/coverage/reports/' + dateFormat(new Date(), 'yyyymmdd-HHMMss');
 
