@@ -468,7 +468,7 @@ module.exports = function (grunt) {
       }
     },
 
-    mocha_istanbul: {
+    mochaIstanbul: {
             coverage: {
                 src: ['test/unit', 'test/api'], // a folder works nicely
                 options: {
@@ -532,8 +532,8 @@ module.exports = function (grunt) {
     'express:dev',
     'postcss',
     'connect:test',
-    'mocha_istanbul',
-    'istanbul_check_coverage'
+    'mochaIstanbul',
+    'istanbulCheckCoverage'
     // 'instrument',
     // 'reloadTasks',
     // 'mochaTest',
