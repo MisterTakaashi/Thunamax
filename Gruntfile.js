@@ -32,7 +32,7 @@ module.exports = function (grunt) {
 
   var dateFormat = require('dateformat');
 
-  var reportDir = 'test/coverage/reports/' + dateFormat(new Date(), 'yyyymmdd-HHMMss');
+  // var reportDir = 'test/coverage/reports/' + dateFormat(new Date(), 'yyyymmdd-HHMMss');
 
   // Define the configuration for all the tasks
   grunt.initConfig({
