@@ -477,7 +477,7 @@ module.exports = function (grunt) {
             }
           },
 
-          istanbul_check_coverage: {
+          istanbulCheckCoverage: {
           default: {
             options: {
               coverageFolder: 'coverage*', // will check both coverage folders and merge the coverage results
