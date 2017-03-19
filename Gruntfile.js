@@ -521,7 +521,6 @@ module.exports = function (grunt) {
     'express:dev',
     'postcss',
     'connect:test',
-    'mochaTest'
   ]);
 
   grunt.registerTask('coverage', [
