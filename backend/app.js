@@ -4,7 +4,8 @@ var mongoose = require('mongoose');
 // mongoose.Promise = require('bluebird');
 var process = require('process');
 
-var cardChecker = require('./card.js');
+// Controllers
+var checkoutCtrl = require('./controllers/checkout.js');
 
 var app = express();
 
@@ -14,36 +15,17 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
   extended: true
 }));
+app.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+});
 
 app.get('/', function (req, res) {
   res.send('Hello World!');
 });
 
-app.post('/checkout', function(req, res) {
-  // let card = JSON.parse(req.body.card);
-  let card = req.body.card;
-
-  console.log(card);
-
-  let cardResult = cardChecker.checkCard(card);
-  if (!cardResult.status){
-    res.json({status: false, error: cardResult.error});
-    return;
-  }
-
-  // Vérification du montant du paiement
-  let amount = req.body.amount;
-  if (amount == undefined){
-    res.json({status: false, error: "Le montant du paiement doit être renseigné"});
-    return;
-  }
-  if (!new RegExp(/^\d+$/).test(amount)){
-    res.json({status: false, error: "Le montant du paiement doit être un nombre"});
-    return;
-  }
-
-  res.json({status: true});
-})
+app.post('/checkout', checkoutCtrl.create);
 
 app.listen(4040, function () {
   console.log('Example app listening on port 4040!');

@@ -20,14 +20,14 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">66.67% </span>
+        <span class="strong">100% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>12/18</span>
+        <span class='fraction'>17/17</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">50% </span>
+        <span class="strong">100% </span>
         <span class="quiet">Branches</span>
-        <span class='fraction'>6/12</span>
+        <span class='fraction'>12/12</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">100% </span>
@@ -35,13 +35,13 @@
         <span class='fraction'>1/1</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">66.67% </span>
+        <span class="strong">100% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>12/18</span>
+        <span class='fraction'>17/17</span>
       </div>
     </div>
   </div>
-  <div class='status-line medium'></div>
+  <div class='status-line high'></div>
 <pre><table class="coverage">
 <tr><td class="line-count quiet">1
 2
@@ -73,69 +73,63 @@
 28
 29
 30
-31
-32
-33</td><td class="line-coverage quiet"><span class="cline-any cline-yes">1×</span>
+31</td><td class="line-coverage quiet"><span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">7×</span>
+<span class="cline-any cline-yes">7×</span>
 <span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">6×</span>
 <span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">5×</span>
+<span class="cline-any cline-yes">5×</span>
 <span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4×</span>
 <span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-yes">3×</span>
 <span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2×</span>
 <span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">module.exports.checkCard = function (card) {
   // Vérification expiration
   let expiration = card.expiration;
-  <span class="missing-if-branch" title="if path not taken" >I</span>if (expiration == undefined){
-<span class="cstat-no" title="statement not covered" >    return {status: false, error: "La date d'expiration doit être renseignée"};</span>
+  if (expiration == undefined){
+    return {status: false, error: "La date d'expiration doit être renseignée"};
   }
-  <span class="missing-if-branch" title="if path not taken" >I</span>if (!new RegExp(/^\d{2}\/\d{2}$/).test(expiration)){
-<span class="cstat-no" title="statement not covered" >    return {status: false, error: "La date d'expiration est incorrecte"};</span>
+  if (!new RegExp(/^\d{2}\/\d{2}$/).test(expiration)){
+    return {status: false, error: "La date d'expiration est incorrecte"};
   }
 &nbsp;
   // Vérification numéro de carte
   let number = card.number;
-  <span class="missing-if-branch" title="if path not taken" >I</span>if (number == undefined){
-<span class="cstat-no" title="statement not covered" >    return {status: false, error: "Le numéro de carte doit être renseigné"};</span>
+  if (number == undefined){
+    return {status: false, error: "Le numéro de carte doit être renseigné"};
   }
-  <span class="missing-if-branch" title="if path not taken" >I</span>if (!new RegExp(/^\d{16}$/).test(number)){
-<span class="cstat-no" title="statement not covered" >    return {status: false, error: "Le numéro de carte est incorrecte"};</span>
+  if (!new RegExp(/^\d{16}$/).test(number)){
+    return {status: false, error: "Le numéro de carte est incorrect"};
   }
 &nbsp;
   // Vérification du CVV
   let cvv = card.cvv;
-  <span class="missing-if-branch" title="if path not taken" >I</span>if (cvv == undefined){
-<span class="cstat-no" title="statement not covered" >    return {status: false, error: "Le crytpogramme de sécurité doit être renseigné"};</span>
+  if (cvv == undefined){
+    return {status: false, error: "Le crytpogramme de sécurité doit être renseigné"};
   }
-  <span class="missing-if-branch" title="if path not taken" >I</span>if (!new RegExp(/^\d{3}$/).test(cvv)){
-<span class="cstat-no" title="statement not covered" >    return {status: false, error: "Le crytpogramme de sécurité est incorrect"};</span>
+  if (!new RegExp(/^\d{3}$/).test(cvv)){
+    return {status: false, error: "Le crytpogramme de sécurité est incorrect"};
   }
-&nbsp;
-  console.log("OOOOOOOK");
 &nbsp;
   return {status: true};
 }
@@ -145,7 +139,7 @@
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Thu Mar 16 2017 23:23:48 GMT+0100 (Paris, Madrid)
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Fri Mar 17 2017 15:36:46 GMT+0100 (Paris, Madrid)
 </div>
 </div>
 <script src="../prettify.js"></script>

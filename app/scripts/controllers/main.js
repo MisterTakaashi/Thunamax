@@ -20,8 +20,8 @@ angular.module('thunamaxApp')
       console.log('Transfer des données bancaires');
       var card = {
         number: $scope.carteInput,
-        firstname: $scope.firstname,
-        lastname: $scope.lastname,
+        firstname: $scope.firstName,
+        lastname: $scope.lastName,
         expiration: $scope.expireInput,
         cvv: $scope.cryptoInput
       };

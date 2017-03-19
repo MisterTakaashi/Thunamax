@@ -470,12 +470,24 @@ module.exports = function (grunt) {
 
     mocha_istanbul: {
             coverage: {
-                src: 'test/unit', // a folder works nicely
+                src: ['test/unit', 'test/api'], // a folder works nicely
                 options: {
                     mask: '*.js'
                 }
             }
+          },
+
+          istanbul_check_coverage: {
+          default: {
+            options: {
+              coverageFolder: 'coverage*', // will check both coverage folders and merge the coverage results
+              check: {
+                lines: 80,
+                statements: 80
+              }
+            }
           }
+        }
   });
 
 
@@ -506,6 +518,7 @@ module.exports = function (grunt) {
     'wiredep',
     'env:test',
     'concurrent:test',
+    'express:dev',
     'postcss',
     'connect:test',
     'mochaTest'
@@ -516,9 +529,11 @@ module.exports = function (grunt) {
     'wiredep',
     'env:test',
     'concurrent:test',
+    'express:dev',
     'postcss',
     'connect:test',
-    'mocha_istanbul'
+    'mocha_istanbul',
+    'istanbul_check_coverage'
     // 'instrument',
     // 'reloadTasks',
     // 'mochaTest',
